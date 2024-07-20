@@ -1,73 +1,57 @@
+import { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { NavLink } from "react-router-dom";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 const Index = () => {
+  const [prompt, setPrompt] = useState('');
+  const [output, setOutput] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // TODO: Implement actual backend communication
+    setOutput('Backend code generation in progress...');
+  };
+
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Hero Section */}
-      <section className="flex-grow flex items-center justify-center bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white">
-        <div className="text-center">
-          <h1 className="text-5xl font-bold mb-4">GPT Engineer for Backend</h1>
-          <p className="text-xl mb-8">Revolutionize your backend development with AI</p>
-          <Button asChild size="lg">
-            <NavLink to="/dashboard">Get Started</NavLink>
-          </Button>
-        </div>
-      </section>
+    <div className="flex flex-col min-h-screen p-4 md:p-8 bg-gray-100">
+      <header className="mb-8">
+        <h1 className="text-3xl font-bold text-gray-800">GPT Engineer for Backend</h1>
+        <p className="text-gray-600">Generate backend code with AI</p>
+      </header>
 
-      {/* Features Section */}
-      <section className="py-16 bg-gray-100">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">Key Features</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <FeatureCard
-              title="GPT-4 Integration"
-              description="Leverage the power of OpenAI's GPT-4 for intelligent code generation."
-            />
-            <FeatureCard
-              title="GitHub Integration"
-              description="Seamlessly connect and manage your GitHub repositories."
-            />
-            <FeatureCard
-              title="Real Code Generation"
-              description="Generate actual, functional code, not just placeholders."
-            />
-          </div>
-        </div>
-      </section>
+      <main className="flex-grow flex flex-col md:flex-row gap-8">
+        <section className="flex-1">
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label htmlFor="prompt" className="block text-sm font-medium text-gray-700 mb-1">
+                Prompt
+              </label>
+              <Textarea
+                id="prompt"
+                value={prompt}
+                onChange={(e) => setPrompt(e.target.value)}
+                placeholder="Describe your backend requirements..."
+                className="w-full h-40"
+              />
+            </div>
+            <Button type="submit" className="w-full">Generate Backend Code</Button>
+          </form>
+        </section>
 
-      {/* Testimonials Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">What Our Users Say</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <TestimonialCard
-              quote="GPT Engineer has revolutionized our backend development process. It's a game-changer!"
-              author="Jane Doe, CTO at TechCorp"
-            />
-            <TestimonialCard
-              quote="The code quality and speed of development have improved significantly since we started using GPT Engineer."
-              author="John Smith, Lead Developer at InnoSoft"
-            />
+        <section className="flex-1">
+          <h2 className="text-xl font-semibold mb-2 text-gray-800">Generated Code</h2>
+          <div className="bg-white p-4 rounded-md shadow">
+            <pre className="whitespace-pre-wrap">{output}</pre>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
+
+      <footer className="mt-8 text-center text-gray-600">
+        <p>&copy; 2023 GPT Engineer for Backend. All rights reserved.</p>
+      </footer>
     </div>
   );
 };
-
-const FeatureCard = ({ title, description }) => (
-  <div className="bg-white p-6 rounded-lg shadow-md">
-    <h3 className="text-xl font-semibold mb-2">{title}</h3>
-    <p>{description}</p>
-  </div>
-);
-
-const TestimonialCard = ({ quote, author }) => (
-  <div className="bg-gray-100 p-6 rounded-lg">
-    <p className="italic mb-4">"{quote}"</p>
-    <p className="font-semibold">- {author}</p>
-  </div>
-);
 
 export default Index;

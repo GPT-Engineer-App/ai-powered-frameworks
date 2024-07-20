@@ -8,6 +8,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { CircleUser } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
 export const UserMenu = () => (
   <DropdownMenu>
@@ -20,10 +21,12 @@ export const UserMenu = () => (
     <DropdownMenuContent align="end">
       <DropdownMenuLabel>My Account</DropdownMenuLabel>
       <DropdownMenuSeparator />
-      <DropdownMenuItem>Settings</DropdownMenuItem>
-      <DropdownMenuItem>Support</DropdownMenuItem>
-      <DropdownMenuSeparator />
-      <DropdownMenuItem>Logout</DropdownMenuItem>
+      <DropdownMenuItem asChild>
+        <NavLink to="/login">Login</NavLink>
+      </DropdownMenuItem>
+      <DropdownMenuItem asChild>
+        <NavLink to="/signup">Sign Up</NavLink>
+      </DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>
 );

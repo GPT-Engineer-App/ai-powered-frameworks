@@ -1,4 +1,4 @@
-import { Home } from "lucide-react";
+import { Home, Zap, DollarSign, Mail } from "lucide-react";
 import Index from "./pages/Index.jsx";
 
 /**
@@ -10,5 +10,23 @@ export const navItems = [
     to: "/",
     icon: <Home className="h-4 w-4" />,
     page: <Index />,
+  },
+  {
+    title: "Features",
+    to: "/features",
+    icon: <Zap className="h-4 w-4" />,
+    page: <div>Features Page</div>, // Placeholder
+  },
+  {
+    title: "Pricing",
+    to: "/pricing",
+    icon: <DollarSign className="h-4 w-4" />,
+    page: <div>Pricing Page</div>, // Placeholder
+  },
+  {
+    title: "Contact",
+    to: "/contact",
+    icon: <Mail className="h-4 w-4" />,
+    page: <div>Contact Page</div>, // Placeholder
   },
 ];

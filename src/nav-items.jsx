@@ -1,6 +1,7 @@
 import { Home, Zap, DollarSign, Mail } from "lucide-react";
 import Index from "./pages/Index.jsx";
 import Features from "./pages/Features.jsx";
+import Pricing from "./pages/Pricing.jsx";
 
 /**
  * Central place for defining the navigation items. Used for navigation components and routing.
@@ -22,7 +23,7 @@ export const navItems = [
     title: "Pricing",
     to: "/pricing",
     icon: <DollarSign className="h-4 w-4" />,
-    page: <div>Pricing Page</div>, // Placeholder
+    page: <Pricing />,
   },
   {
     title: "Contact",
